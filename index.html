@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Poetry for Jewell</title>
+  <style>
+    /* Background and body styling */
+    body {
+      font-family: 'Georgia', serif;
+      margin: 0;
+      background: linear-gradient(to bottom right, #f7cac9, #92a8d1);
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: #333;
+      height: 100vh;
+      background-attachment: fixed;
+    }
+    /* Poem container styling with increased transparency */
+    .poem-container {
+      background: rgba(255, 255, 255, 0.3); /* Further increased transparency */
+      padding: 40px;
+      border-radius: 12px;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.2);
+      max-width: 600px;
+      height: 80vh;
+      overflow-y: auto;
+      text-align: center;
+      backdrop-filter: blur(2px); /* Slightly stronger blur effect */
+      z-index: 10;
+      margin: 20px;
+    }
+    /* Scrollbar styling */
+    .poem-container::-webkit-scrollbar {
+      width: 8px;
+    }
+    .poem-container::-webkit-scrollbar-thumb {
+      background-color: #d9534f;
+      border-radius: 8px;
+    }
+    .poem-container::-webkit-scrollbar-track {
+      background: #f1f1f1;
+    }
+    /* Title styling */
+    h1 {
+      font-size: 28px;
+      color: #d9534f;
+      font-weight: bold;
+      margin-bottom: 20px;
+      text-transform: uppercase;
+      letter-spacing: 1px;
+    }
+    /* Paragraph and line styling */
+    p {
+      font-size: 20px;
+      line-height: 1.8;
+      color: #555;
+      margin: 10px 0;
+    }
+    .line {
+      margin: 10px 0;
+    }
+    .line:first-child, .line:last-child {
+      font-style: italic;
+      color: #b03a2e;
+    }
+    /* Falling hearts effect with reduced size */
+    .falling-heart {
+      position: absolute;
+      width: 80px; /* Reduced size */
+      height: 80px; /* Reduced size */
+      animation: fall linear infinite;
+      pointer-events: none;
+      z-index: 1;
+    }
+    @keyframes fall {
+      0% {
+        transform: translateY(-100px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="poem-container">
+    <h1>I Call Her Bae and She's My Love</h1>
+    <p class="line">I call her Bae, my heart’s embrace,</p>
+    <p class="line">A gentle light, my quiet place.</p>
+    <p class="line">In whispers soft, her name I say,</p>
+    <p class="line">My love, my dream, my every day.</p>
+    <br>
+    <p class="line">She’s my dawn, my midnight star,</p>
+    <p class="line">Close in soul, though worlds afar.</p>
+    <p class="line">Her laugh, a melody I hold dear,</p>
+    <p class="line">In moments close and ones unclear.</p>
+    <br>
+    <p class="line">I call her Bae, my heart’s delight,</p>
+    <p class="line">My compass true, my northern light.</p>
+    <p class="line">Through days of sun and nights above,</p>
+    <p class="line">She is my life, my endless love.</p>
+    <br>
+    <p class="line">In winter’s chill, she warms my soul,</p>
+    <p class="line">In summer’s heat, she makes me whole.</p>
+    <p class="line">A gentle touch, a tender glance,</p>
+    <p class="line">Our story told in a timeless dance.</p>
+    <br>
+    <p class="line">I call her Bae, in voice and song,</p>
+    <p class="line">In quiet moments, where we belong.</p>
+    <p class="line">She is the moon to my endless night,</p>
+    <p class="line">The love that fills my world with light.</p>
+    <br>
+    <p class="line">With every beat, my heart does say,</p>
+    <p class="line">Forever hers, in every way.</p>
+    <p class="line">My love, my heart, my sweetest dove,</p>
+    <p class="line">I call her Bae, she’s my true love.</p>
+  </div>
+
+  <script>
+    // Array of GIF URLs for multiple types of hearts
+    const gifUrls = [
+      'heart1.gif', // replace with the actual URL of your GIFs
+      'heart2.gif',
+      'heart3.gif',
+      'heart4.gif',
+      'heart5.gif',
+      'heart6.gif',
+      'heart7.gif',
+      'heart8.gif',
+      'heart9.gif',
+      'heart10.gif',
+      'heart11.gif',
+      'heart12.gif',
+      'heart13.gif',
+      'heart14.gif',
+      'heart15.gif',
+      'heart16.gif',
+      'heart17.gif',
+      'heart18.gif'
+    ];
+
+    // Function to create a falling heart with a random GIF
+    function createFallingHeart() {
+      const heart = document.createElement('img');
+      heart.src = gifUrls[Math.floor(Math.random() * gifUrls.length)]; // Randomly select a GIF
+      heart.classList.add('falling-heart');
+      heart.style.left = `${Math.random() * 100}vw`;
+      heart.style.animationDuration = `${3 + Math.random() * 2}s`; // Random fall duration
+      document.body.appendChild(heart);
+
+      // Remove heart after animation ends to keep the page clean
+      heart.addEventListener('animationend', () => {
+        heart.remove();
+      });
+    }
+
+    // Use a smaller number of falling hearts and optimize the interval for mobile
+    let heartCount = 0;
+    function generateHearts() {
+      if (heartCount < 25) { // Limit number of hearts
+        createFallingHeart();
+        heartCount++;
+      }
+    }
+
+    // Generate hearts at intervals, but optimize for mobile performance
+    setInterval(generateHearts, 2000); // Generate a heart every 1.5 seconds
+  </script>
+</body>
+</html>
